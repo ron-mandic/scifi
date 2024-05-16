@@ -11,12 +11,16 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
-	--width-viewport: 1920px;
-	--height-viewport: 1080px;
+	--width-fhd: 1920px;
+	--height-fhd: 1080px;
+	--width-macbook: 2056px;
+	--height-macbook: 1286px;
 	--width-canvas: 8642px;
 	--height-canvas: 4860px;
 
-	--clr-bg: #14232b;
+	--clr-bg-light: hsl(201, 37%, 24%);
+	--clr-bg-normal: hsl(201, 37%, 12%);
+	--clr-bg-dark: hsl(201, 37%, 8%);
 }
 *,
 *::before,
@@ -27,7 +31,7 @@
 }
 
 body {
-	background-color: rgb(10, 10, 10);
+	background-color: var(--clr-bg-dark);
 	margin: 0px;
 	height: 100vh;
 	overflow: hidden;

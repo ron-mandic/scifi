@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { TOPICS } from '$lib/ts/constants';
+	import { onMount } from 'svelte';
 	import Tile from './Tile.svelte';
 
 	let refTiles: HTMLDivElement;
@@ -49,8 +50,8 @@
 
 <style lang="scss">
 	#tiles {
-		width: clamp(1920px, 450.10416667vmax, 8642px);
-		height: clamp(1080px, 450vmax, 4860px);
-		background-color: var(--clr-bg);
+		width: clamp(var(--width-macbook), 450.10416667vmax, var(--width-canvas));
+		height: clamp(var(--height-macbook), 450vmax, var(--height-canvas));
+		background-color: var(--clr-bg-normal);
 	}
 </style>
