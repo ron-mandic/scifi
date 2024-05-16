@@ -23,14 +23,27 @@
 		--h-small: 300px;
 
 		transition: transform 800ms ease;
+		display: none;
+		background-color: hsl(201, 37%, 24%);
+		border-radius: 43px;
 
 		&.big {
+			left: calc(var(--x) - (var(--w-big) / 2));
+			top: calc(var(--y) - (var(--h-big) / 2));
 			width: var(--w-big);
 			height: var(--h-big);
 		}
 		&.small {
+			left: calc(var(--x) - (var(--w-small) / 2));
+			top: calc(var(--y) - (var(--h-small) / 2));
 			width: var(--w-small);
 			height: var(--h-small);
+		}
+
+		&:nth-child(1) {
+			display: block;
+			--x: 50%;
+			--y: 50%;
 		}
 	}
 
@@ -49,27 +62,5 @@
 		transition:
 			opacity 800ms ease,
 			transform 800ms ease;
-	}
-
-	.tile {
-		display: none;
-		background-color: hsl(201, 37%, 24%);
-		border-radius: 1vmax;
-
-		&.big {
-			left: calc(var(--x) - (var(--w-big) / 2));
-			top: calc(var(--y) - (var(--h-big) / 2));
-		}
-
-		&.small {
-			left: calc(var(--x) - (var(--w-small) / 2));
-			top: calc(var(--y) - (var(--h-small) / 2));
-		}
-
-		&:nth-child(1) {
-			display: block;
-			--x: 3935px;
-			--y: 2190px;
-		}
 	}
 </style>

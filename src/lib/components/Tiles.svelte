@@ -49,19 +49,8 @@
 
 <style lang="scss">
 	#tiles {
-		width: 450.10416667vmax; // (8642 / 1920) * 100
-		height: 450vmax; // (4860 * 1080) * 1000
+		width: clamp(1920px, 450.10416667vmax, 8642px);
+		height: clamp(1080px, 450vmax, 4860px);
 		background-color: var(--clr-bg);
-
-		&::before {
-			position: fixed;
-			width: 100px;
-			height: 100%;
-			background-color: white;
-			top: 0;
-			left: 50%;
-			translate: -50% 0;
-			z-index: 100;
-		}
 	}
 </style>
