@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	line-height: 1.5;
+	font-weight: 400;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	--width-viewport: 1920px;
+	--height-viewport: 1080px;
+	--width-canvas: 8642px;
+	--height-canvas: 4860px;
+
+	--clr-bg: #14232b;
+}
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	width: 100%;
+	height: 100vh;
+	margin: 0 auto;
+	overflow: hidden;
+	background-color: black;
+}
+
+button {
+	all: unset;
+}
+
+.debug {
+	outline: 1px solid red;
+}
