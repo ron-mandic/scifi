@@ -5,6 +5,7 @@
 	import { evaluateUserClicks } from '$lib/ts/functions';
 	import { exprStore } from '$lib/ts/expr-store';
 	import TileModal from './TileModal.svelte';
+	import TileScore from './TileScore.svelte';
 
 	let refTiles: HTMLDivElement;
 	let isPanning = true;
@@ -74,6 +75,10 @@
 			arrUserClicks = [];
 		}
 	}
+
+	$: if ($exprStore === '') {
+		isPanning = true;
+	}
 </script>
 
 <svelte:window on:mousemove={handleMouseMove} />
@@ -85,10 +90,10 @@
 		{/each}
 	{/each}
 </div>
-<!-- {#if $exprStore} -->
-<TileModal expr={'0-0&0-1'} />
-
-<!-- {/if} -->
+{#if $exprStore}
+	<TileModal expr={exprStore} />
+{/if}
+<TileScore />
 
 <style lang="scss">
 	#tiles {

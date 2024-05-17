@@ -25,12 +25,13 @@
 		--h-small: 300px;
 
 		&:not(.matched)::before {
-			content: attr(data-tile);
+			content: url('/images/overlay.svg');
 			position: absolute;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			font-size: 42px;
+			filter: invert(1);
+			opacity: 0.25;
 		}
 
 		background-color: var(--clr-bg-light);
@@ -45,6 +46,10 @@
 			img {
 				opacity: 0;
 			}
+		}
+
+		&.clicked::before {
+			opacity: 0 !important;
 		}
 
 		&.clicked {

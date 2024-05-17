@@ -1,16 +1,18 @@
 <script lang="ts">
 	import { TOPICS_BY_EXPR } from '$lib/ts/constants';
 	import { scoreStore } from '$lib/ts/score-store';
+	import { fly } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
 	export let expr;
 
-	let { name, text, images } = TOPICS_BY_EXPR[expr];
+	let { name, text, images } = TOPICS_BY_EXPR[$expr];
 	let [image0, image1, image3, image4] = images;
 
-	let moved = true;
+	let moved = false;
 	console.log($scoreStore);
 </script>
 
-<div>
+<div transition:fly={{ delay: 250, duration: 500, x: 0, y: 100, opacity: 0, easing: quintOut }}>
 	<div class="screens" class:moved>
 		<div class="left">
 			<div class="layout">
@@ -60,6 +62,7 @@
 								});
 							hasVoted = true;
 							console.log($scoreStore);
+							$expr = '';
 						}}
 					>
 						<img src={image3} alt="" />
@@ -76,6 +79,7 @@
 								});
 							hasVoted = true;
 							console.log($scoreStore);
+							$expr = '';
 						}}
 					>
 						<img src={image4} alt="" />
