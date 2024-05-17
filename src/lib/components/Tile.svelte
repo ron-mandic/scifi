@@ -10,9 +10,11 @@
 	class="tile absolute overflow-hidden"
 	class:big={j % 2 === 0}
 	class:small={j % 2 !== 0}
+	data-src={src}
+	data-tile={`${i}-${j}`}
 	on:click
 >
-	<img class="w-full h-full object-cover opacity-0" {src} {alt} />
+	<img class="w-full h-full object-cover" {src} {alt} />
 </button>
 
 <style lang="scss">
@@ -22,10 +24,35 @@
 		--w-small: 482px;
 		--h-small: 300px;
 
-		transition: transform 800ms ease;
-		display: none;
+		&:not(.matched)::before {
+			content: attr(data-tile);
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 42px;
+		}
+
 		background-color: var(--clr-bg-light);
+		transition:
+			transform 800ms ease,
+			opacity 800ms ease,
+			background-color 800ms ease;
+		display: none;
 		border-radius: 43px;
+
+		&:not(.clicked) {
+			img {
+				opacity: 0;
+			}
+		}
+
+		&.clicked {
+			background-color: none;
+			img {
+				opacity: 1;
+			}
+		}
 
 		& > img {
 			border-radius: inherit;
@@ -34,7 +61,7 @@
 				transform 800ms ease;
 		}
 
-		&:hover {
+		&:not(.matched):hover {
 			transform: scale(1.1);
 			cursor: pointer;
 

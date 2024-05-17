@@ -2,12 +2,21 @@
 	import { TOPICS } from '$lib/ts/constants';
 	import { onMount } from 'svelte';
 	import Tile from './Tile.svelte';
+	import { evaluateUserClicks } from '$lib/ts/functions';
+	import { exprStore } from '$lib/ts/expr-store';
 
 	let refTiles: HTMLDivElement;
 	let isPanning = true;
+	let arrUserClicks: string[] = [];
 
-	function handleMouseClick() {
-		isPanning = !isPanning;
+	function handleMouseClick(e: MouseEvent) {
+		let ref = e.currentTarget as HTMLButtonElement;
+		const { tile } = ref.dataset;
+
+		if (ref.classList.contains('matched')) return;
+
+		arrUserClicks = [...arrUserClicks, tile as string];
+		ref.classList.add('clicked');
 	}
 
 	function handleMouseMove(e: MouseEvent) {
@@ -35,6 +44,33 @@
 				easing: 'cubic-bezier(.17,.67,.78,.78)'
 			}
 		);
+	}
+
+	$: if (arrUserClicks.length !== 0) {
+		console.log(arrUserClicks);
+
+		if (arrUserClicks.length === 2) {
+			let bool = evaluateUserClicks(arrUserClicks);
+			const tiles = document.querySelectorAll(`.tile.clicked`) as NodeListOf<HTMLButtonElement>;
+
+			if (bool) {
+				let expr = arrUserClicks.join('&');
+				$exprStore = expr;
+
+				tiles.forEach((tile, key, parent) => {
+					tile.classList.add('matched');
+					tile.style.backgroundColor = 'none';
+					tile.style.opacity = '.125';
+					tile.style.pointerEvents = 'none';
+					tile.querySelector('img')!.style.opacity = '1';
+				});
+			}
+
+			tiles.forEach((tile) => {
+				tile.classList.remove('clicked');
+			});
+			arrUserClicks = [];
+		}
 	}
 </script>
 
