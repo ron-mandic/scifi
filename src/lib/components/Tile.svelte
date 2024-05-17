@@ -39,7 +39,7 @@
 			opacity 800ms ease,
 			background-color 800ms ease;
 		display: none;
-		border-radius: 43px;
+		border-radius: 24px;
 
 		&:not(.clicked) {
 			img {

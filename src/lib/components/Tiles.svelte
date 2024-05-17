@@ -4,6 +4,7 @@
 	import Tile from './Tile.svelte';
 	import { evaluateUserClicks } from '$lib/ts/functions';
 	import { exprStore } from '$lib/ts/expr-store';
+	import TileModal from './TileModal.svelte';
 
 	let refTiles: HTMLDivElement;
 	let isPanning = true;
@@ -64,6 +65,7 @@
 					tile.style.pointerEvents = 'none';
 					tile.querySelector('img')!.style.opacity = '1';
 				});
+				isPanning = false;
 			}
 
 			tiles.forEach((tile) => {
@@ -83,6 +85,10 @@
 		{/each}
 	{/each}
 </div>
+<!-- {#if $exprStore} -->
+<TileModal expr={'0-0&0-1'} />
+
+<!-- {/if} -->
 
 <style lang="scss">
 	#tiles {
