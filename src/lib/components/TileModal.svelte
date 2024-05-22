@@ -18,13 +18,14 @@
 			<div class="layout">
 				<div class="col">
 					<h2 class="mb-4 font-bold text-3xl">{name}</h2>
-					<p class="text-base text-balance">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde amet consectetur
-						similique? Repellendus consequuntur consequatur esse sit tenetur culpa ratione eum porro
-						sunt dolorem! Odio quidem neque eaque sunt voluptatem, molestias inventore repellendus
-						error nihil iste adipisci officia expedita nisi tempore repudiandae aliquid reiciendis
-						excepturi maiores, aspernatur, ipsam minus illo nesciunt? Numquam incidunt cupiditate
-						doloremque eius maiores facilis illum nemo?
+					<p class="text-base text-balance line-clamp-[16]">
+						{text ||
+							'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde amet consectetur \
+						similique? Repellendus consequuntur consequatur esse sit tenetur culpa ratione eum porro \
+						sunt dolorem! Odio quidem neque eaque sunt voluptatem, molestias inventore repellendus \
+						error nihil iste adipisci officia expedita nisi tempore repudiandae aliquid reiciendis \
+						excepturi maiores, aspernatur, ipsam minus illo nesciunt? Numquam incidunt cupiditate \
+						doloremque eius maiores facilis illum nemo?'}
 					</p>
 
 					<button
